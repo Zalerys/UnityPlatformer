@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class SpawnCoinScript : MonoBehaviour
 {
-public GameObject coinPrefab;
+public GameObject theCoin;
 
-// Update is called once per frame
-void Update(){}
 
+void Update(){
+    gameObject.transform.Rotate(0f,1f,0f, Space.Self);
+}
 
 private void onTriggerEnter(Collider other){
+
     if(other.gameObject.tag == "Player"){
-    Vector3 randomPosition = new Vector3(Random.Range(-10,10), 0, Random.Range(-10,10));
-    Instantiate(coinPrefab, randomPosition, Quaternion.identity);
+    Destroy(gameObject);
+    Vector3 randomPosition = new Vector3(Random.Range(-5, 5), 1, Random.Range(-5, 5));
+    Instantiate(theCoin, randomPosition, Quaternion.identity);
     }
 }
 }
